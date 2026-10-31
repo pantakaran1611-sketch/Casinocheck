@@ -2,5 +2,5 @@
 // These two values are designed to be public in a browser; NEVER paste service_role/secret keys here.
 window.CASINOCHECK_CONFIG = {
   supabaseUrl: 'YOUR_SUPABASE_PROJECT_URL',https://wznxcdgbifldffyewihx.supabase.co/rest/v1/
-  supabaseAnonKey: 'YOUR_SUPABASE_ANON_PUBLIC_KEY'
+  supabaseAnonKey: 'YOUR_SUPABASE_ANON_PUBLIC_KEY'sb_publishable_OLw3hTBZ_d_OQ1E33f7LsQ_9A3rEE2A
 };
