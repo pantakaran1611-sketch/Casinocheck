@@ -1,0 +1,6 @@
+// Paste your Supabase Project URL and anon/public key here.
+// These two values are designed to be public in a browser; NEVER paste service_role/secret keys here.
+window.CASINOCHECK_CONFIG = {
+  supabaseUrl: 'YOUR_SUPABASE_PROJECT_URL',
+  supabaseAnonKey: 'YOUR_SUPABASE_ANON_PUBLIC_KEY'
+};
