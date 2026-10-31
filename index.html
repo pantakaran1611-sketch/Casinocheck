@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CasinoCheck is an independent guide to free-to-play social games, player experience, privacy and safety.">
+  <meta name="theme-color" content="#10131b">
+  <title>CasinoCheck — Play smart. Stay informed.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"><span class="pulse"></span> INDEPENDENT SOCIAL-GAMING REVIEWS <span class="topline-right">18+ · Free-to-play focus</span></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="CasinoCheck home"><span class="brand-mark">C<span>✓</span></span><span>casino<span class="brand-light">check</span><small>PLAY SMART. STAY INFORMED.</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav id="mainNav"><a href="#reviews">Game reviews</a><a href="#how-we-rate">How we rate</a><a href="#safety">Player safety</a><a href="#about">About</a><a href="#adminSection" id="adminNavLink" hidden>Admin</a><button class="nav-cta" id="accountBtn" type="button">Sign in</button><button class="nav-cta" id="writeReviewTop" type="button">Write a review <span>↗</span></button></nav>
+  </header>
+
+  <main id="home">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE PLAYER-FIRST GAME GUIDE</div>
+        <h1>Find your next<br><em>good time.</em></h1>
+        <p class="hero-lead">Independent reviews of free-to-play social games. Clear information, honest player experiences and safety-first guidance — all in one place.</p>
+        <div class="hero-actions"><a class="btn btn-gold" href="#reviews">Explore game reviews <span>→</span></a><a class="text-link" href="#how-we-rate">How our ratings work <span>↗</span></a></div>
+        <div class="hero-proof"><div class="avatar-stack"><i>J</i><i>M</i><i>A</i><i>+</i></div><span><b>Built for players</b><br>Not for hype.</span></div>
+      </div>
+      <div class="hero-art" aria-label="Decorative game cards">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="floating-chip chip-one">✦</div><div class="floating-chip chip-two">♠</div>
+        <div class="game-tile tile-back"><span class="tile-icon">🌙</span><small>ADVENTURE</small><b>Moonlight<br>Quest</b><span class="tile-stars">★★★★★</span></div>
+        <div class="game-tile tile-front"><div class="tile-top"><span>EDITOR'S PICK</span><span>✦</span></div><div class="tile-art">🎡</div><small>SOCIAL ARCADE</small><b>Golden<br>Garden</b><div class="tile-rating"><strong>4.8</strong><span>★★★★★<small>Community score</small></span></div></div>
+        <div class="hero-note"><span class="note-check">✓</span> Free-to-play focus<br><small>No cash-out claims</small></div>
+      </div>
+    </section>
+
+    <section class="trust-strip"><div class="wrap trust-inner"><div><span class="trust-icon">◎</span><b>Independent perspective</b><small>Editorially led reviews</small></div><div><span class="trust-icon">⌕</span><b>Clear game details</b><small>Features explained simply</small></div><div><span class="trust-icon">♧</span><b>Player wellbeing</b><small>Safety comes first</small></div><div><span class="trust-icon">◇</span><b>Transparent ratings</b><small>Our method, explained</small></div></div></section>
+
+    <div class="wrap setup-notice" id="setupNotice" hidden><b>Setup needed:</b> add your Supabase Project URL and anon/public key in <code>config.js</code>, then run <code>supabase-schema.sql</code> in Supabase SQL Editor. <span id="globalMessage"></span></div>
+    <p class="wrap global-message" id="globalMessageFallback" role="status"></p>
+    <section class="section wrap" id="reviews">
+      <div class="section-heading"><div><div class="eyebrow">EXPLORE THE DIRECTORY</div><h2>Games worth a closer look<span class="gold-dot">.</span></h2><p>Browse our starter directory. Sample listings below are illustrative demo content, not verified endorsements.</p></div><a class="text-link desktop-link" href="#how-we-rate">Our review process ↗</a></div>
+      <div class="toolbar"><label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search games or categories…" aria-label="Search games"></label><div class="filters" id="filters"><button class="filter active" data-filter="All">All games</button><button class="filter" data-filter="Social arcade">Social arcade</button><button class="filter" data-filter="Adventure">Adventure</button><button class="filter" data-filter="Puzzle">Puzzle</button></div><select id="sortSelect" aria-label="Sort games"><option value="featured">Featured</option><option value="rating">Highest rated</option><option value="name">Name A–Z</option></select></div>
+      <div class="game-grid" id="gameGrid" aria-live="polite"></div>
+      <div class="demo-note"><span>ⓘ</span> Demo directory: game names, descriptions and scores are fictional examples used to demonstrate the site. Replace them only after independent research and verification.</div>
+    </section>
+
+
+    <section class="admin-section wrap" id="adminSection" hidden>
+      <div class="section-heading"><div><div class="eyebrow">PRIVATE WORKSPACE</div><h2>Admin dashboard<span class="gold-dot">.</span></h2><p>Only the account assigned the admin role in Supabase can manage listings and approve reviews.</p></div></div>
+      <p id="adminMessage" class="form-message" role="status"></p>
+      <div class="admin-grid">
+        <form id="gameForm" class="admin-form">
+          <h3>Add a game listing</h3>
+          <label>Game name<input name="name" maxlength="90" required placeholder="Game title"></label>
+          <label>Category<select name="category"><option>Social arcade</option><option>Adventure</option><option>Puzzle</option><option>Simulation</option><option>Other</option></select></label>
+          <label>Developer<input name="developer" maxlength="100" placeholder="Developer / publisher"></label>
+          <label>Official website<input name="website_url" type="url" placeholder="https://..."></label>
+          <label>Short description<textarea name="short_description" minlength="15" maxlength="220" required placeholder="A factual, concise summary"></textarea></label>
+          <label>Full description<textarea name="full_description" maxlength="1500" placeholder="Evidence-based review notes and limitations"></textarea></label>
+          <label>Icon / emoji<input name="icon" maxlength="8" value="🎮"></label>
+          <label>Publication status<select name="status"><option value="draft">Draft</option><option value="published">Published</option></select></label>
+          <label class="check-label"><input type="checkbox" name="is_demo"> This is fictional demo/sample content</label>
+          <button class="btn btn-gold" type="submit">Save game listing</button>
+        </form>
+        <div class="admin-panel"><h3>Pending player reviews</h3><div id="pendingReviews"><p>Loading…</p></div><h3 class="admin-subhead">Game directory</h3><div id="adminGames"><p>Loading…</p></div></div>
+      </div>
+    </section>
+
+    <section class="method-section" id="how-we-rate"><div class="wrap method-grid"><div><div class="eyebrow">NO HIDDEN SCORECARDS</div><h2>Good decisions<br>start with <em>good info.</em></h2><p>Our review framework is designed to help people understand what a free-to-play game offers — and what to watch out for.</p><a class="btn btn-outline" href="#about">Read our principles <span>→</span></a></div><div class="method-list"><article><span>01</span><div><b>Game experience</b><p>Usability, gameplay variety, accessibility and device experience.</p></div><strong>25%</strong></article><article><span>02</span><div><b>Transparency</b><p>Clear rules, virtual-item terms, pricing disclosures and support details.</p></div><strong>30%</strong></article><article><span>03</span><div><b>Privacy & security</b><p>Privacy policy clarity, account controls and responsible data practices.</p></div><strong>25%</strong></article><article><span>04</span><div><b>Player wellbeing</b><p>Spending controls, time-management tools and age-appropriate safeguards.</p></div><strong>20%</strong></article><div class="method-foot">Weights shown are the proposed editorial framework. Scores will appear only after a documented review.</div></div></div></section>
+
+    <section class="safety-section wrap" id="safety"><div class="safety-card"><div class="safety-symbol">♡</div><div><div class="eyebrow">A QUICK BUT IMPORTANT NOTE</div><h2>Play for fun. Keep it that way.</h2><p>Social games may use virtual coins or items. These should not be treated as money, investments or a way to earn income. Check the rules before spending, set limits and take breaks.</p><a href="https://www.gamcare.org.uk/" target="_blank" rel="noopener noreferrer" class="text-link">Find player-support resources ↗</a></div><div class="age-mark">18<span>+</span><small>AGE<br>AWARE</small></div></div></section>
+
+    <section class="about-section" id="about"><div class="wrap about-inner"><div><div class="eyebrow">WHY CASINOCHECK?</div><h2>Less noise.<br><em>More clarity.</em></h2></div><div><p>CasinoCheck is an independent information project focused on free-to-play social gaming. We aim to publish useful, evidence-based reviews and give players a place to share experiences responsibly.</p><p class="about-small">We are not a casino, game operator, payment service or financial adviser. We do not offer real-money gambling, cash prizes, deposits or withdrawals. We do not claim that virtual items have monetary value.</p></div></div></section>
+  </main>
+
+  <footer><div class="wrap footer-main"><a class="brand" href="#home"><span class="brand-mark">C<span>✓</span></span><span>casino<span class="brand-light">check</span><small>PLAY SMART. STAY INFORMED.</small></span></a><div class="footer-links"><a href="#reviews">Reviews</a><a href="#how-we-rate">Rating method</a><a href="#safety">Player safety</a><a href="mailto:hello@casinocheck.example">Contact</a></div><span class="footer-18">18+ · Free-to-play information only</span></div><div class="wrap footer-bottom"><span>© <span id="year"></span> CasinoCheck. Demo project.</span><span>Editorial independence · Transparency · Player wellbeing</span></div><div class="wrap legal-line">CasinoCheck does not promote or facilitate real-money gambling. Game availability, age rules and consumer protections vary by country. Always check local laws and the official game terms.</div></footer>
+
+  <dialog id="gameDialog" class="modal"><button class="modal-close" data-close aria-label="Close">×</button><div id="dialogContent"></div></dialog>
+  <dialog id="authDialog" class="modal review-modal"><button class="modal-close" data-close aria-label="Close">×</button><div class="eyebrow">CASINOCHECK ACCOUNT</div><h2>Sign in to continue</h2><p class="modal-intro">Use your account to submit a review. Email sign-up may require email confirmation.</p><div id="authState"></div><form id="authForm"><label>Mode<select id="authMode"><option value="signin">Sign in</option><option value="signup">Create account</option></select></label><label>Email<input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label><label>Password<input id="authPassword" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"></label><button class="btn btn-gold form-submit" id="authSubmit" type="submit">Sign in</button></form><button class="btn btn-outline form-submit" id="googleLogin" type="button">Continue with Google</button><p class="form-message" id="authMessage" role="status"></p></dialog>
+  <dialog id="reviewDialog" class="modal review-modal"><button class="modal-close" data-close aria-label="Close">×</button><div class="eyebrow">PLAYER VOICE</div><h2>Share your experience</h2><p class="modal-intro">Your review is submitted privately for moderation. It appears publicly only after admin approval. One review per account per game.</p><form id="reviewForm"><label>Your display name<input name="name" maxlength="40" required placeholder="e.g. Alex"></label><label>Game<select name="game" id="reviewGame" required></select></label><label>Your rating<select name="rating" required><option value="">Choose a rating</option><option value="5">★★★★★ — Excellent</option><option value="4">★★★★ — Good</option><option value="3">★★★ — Average</option><option value="2">★★ — Poor</option><option value="1">★ — Very poor</option></select></label><label>Your review<textarea name="review" minlength="20" maxlength="700" required placeholder="What should other players know? (20–700 characters)"></textarea></label><label class="check-label"><input type="checkbox" required> I confirm this is my honest experience and contains no personal or private information.</label><button class="btn btn-gold form-submit" id="reviewSubmit" type="submit">Submit for approval <span>→</span></button><p class="form-message" id="reviewMessage" role="status"></p></form></dialog>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
